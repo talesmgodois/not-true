@@ -1,0 +1,6 @@
+flowchart TD
+    A[New Project] --> B[proototype FE with AI]
+    B[Define directories] --> C[Design dbml]
+    C --> |Run dbmlcli|K[Move SQLto migration]
+    K --> |Run Migration|Y(Check DB)
+    Y --> Z[Generate go client using xo]

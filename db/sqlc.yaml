@@ -1,0 +1,12 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "queries.sql"
+    schema: "schema.sql"
+    database:
+      uri: ${DB_URI}
+    gen:
+      go:
+        package: "sqlc"
+        out: "../not-true-core/pkg/db/sqlc"
+        sql_package: "pgx/v5"

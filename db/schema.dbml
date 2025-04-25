@@ -1,0 +1,93 @@
+Table status_articles {
+  id int [pk, increment]
+  description text
+  code varchar(5)
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+Table tags {
+  id int [pk, increment]
+  description text
+  content text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+}
+
+
+Table article_tag {
+  id_tag int
+  id_article int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+
+  indexes {
+    (id_tag, id_article) [pk]
+  }
+}
+
+Table source_websites {
+  id int [pk, increment]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  name varchar(128)
+  description text
+  url text
+  iamgeUrl text
+
+}
+
+Table articles {
+  id int [pk, increment]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  date_published date
+  title text
+  description text
+  content text
+  slug text
+
+  original_content text
+  original_title text
+  original_url text
+  original_url_hash text
+
+
+  id_status_article int 
+  id_source_website int
+
+  indexes {
+    (date_published)
+    (title)
+    (description)
+    (slug)
+    (original_url_hash)
+    (original_url)
+    (title, date_published)
+    (created_at)
+    (updated_at)
+    (updated_at, created_at, date_published)
+  }
+
+}
+
+Table acceess_logs {
+  id int  [pk, increment]
+  created_at timestamp [default: `now()`]
+  id_article int
+  metadata JSONB
+
+  indexes {
+    (created_at)
+    (id_article)
+  }
+}
+
+
+Ref: articles.id_status_article > status_articles.id
+Ref: articles.id_source_website > source_websites.id
+
+Ref: article_tag.id_article > articles.id
+Ref: article_tag.id_tag > tags.id
+
+Ref: acceess_logs.id_article > articles.id

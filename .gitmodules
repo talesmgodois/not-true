@@ -1,0 +1,3 @@
+[submodule "not-true-core"]
+	path = not-true-core
+	url = https://github.com/talesmgodois/not-true-core.git

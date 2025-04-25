@@ -1,0 +1,12 @@
+.item { 
+  margin: 20px 0; 
+  padding: 10px; 
+  border: 1px solid #ddd; 
+}
+.search-box { 
+  margin: 20px 0; 
+}
+.no-results {
+  color: #666;
+  font-style: italic;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "not_true_core",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:go": "ENVIRONMENT=development air",
+    "dev:vite": "vite",
+    "build:client": "vite build",
+    "generate:types": "openapi-generator-cli generate -i http://localhost:4000/api -g typescript -o ./client/src/types",
+    "dev": "concurrently \"npm run dev:go\" \"npm run dev:vite\" \"npm run generate:types -- --watch\"",
+    "build": "npm run build:client && GOOS=js GOARCH=wasm go build -o static/main.wasm ./client/main.go"
+  },
+  "dependencies": {
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "concurrently": "^8.2.2"
+  }
+}

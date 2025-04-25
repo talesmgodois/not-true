@@ -1,0 +1,6 @@
+[build]
+cmd = "encore run"
+bin = "encore"
+full_bin = "encore run"
+include_ext = ["go", "gotmpl", "html", "css"]
+exclude_dir = ["node_modules", "client/wasm"]

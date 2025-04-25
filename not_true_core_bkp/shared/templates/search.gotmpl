@@ -1,0 +1,13 @@
+{{ define "SearchBox" }}
+<div class="search-box">
+  <form id="searchForm">
+    <input type="text" 
+           id="searchInput" 
+           name="q" 
+           value="{{.SearchQuery}}"
+           placeholder="Search items..."
+           autocomplete="off">
+    <button type="submit">Search</button>
+  </form>
+</div>
+{{ end }}
